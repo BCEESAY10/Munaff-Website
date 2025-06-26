@@ -32,6 +32,71 @@
       #submit:hover{
         background-color: #151b54;
       }
+
+              /* Addition when enhancing serices section's UI */
+        .services-section {
+          padding: 60px 20px;
+          background: #f8fafc;
+          text-align: center;
+        }
+
+        .services-title {
+          font-size: 2.5rem;
+          margin-bottom: 40px;
+          color: #22223b;
+          letter-spacing: 1px;
+        }
+
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 32px;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+
+        .service-card {
+          background: #fff;
+          border-radius: 18px;
+          box-shadow: 0 4px 24px rgba(34, 34, 59, 0.08);
+          padding: 36px 24px;
+          transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+          opacity: 0;
+          transform: translateY(40px);
+          will-change: transform, box-shadow;
+        }
+
+        .service-card .service-icon {
+          font-size: 2.5rem;
+          margin-bottom: 18px;
+        }
+
+        .service-card h3 {
+          font-size: 1.3rem;
+          margin-bottom: 12px;
+          color: #4a4e69;
+        }
+
+        .service-card p {
+          color: #6c757d;
+          font-size: 1rem;
+        }
+
+        .service-card:hover {
+          transform: translateY(-8px) scale(1.04);
+          box-shadow: 0 8px 32px rgba(34, 34, 59, 0.16);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 600px) {
+          .services-title {
+            font-size: 2rem;
+          }
+          .service-card {
+            padding: 28px 12px;
+          }
+        }
+
     </style>
   </head>
   <body class="overflow-x-hidden">
@@ -269,6 +334,27 @@
     </section>
 
     <!-- Services Section -->
+  <section id="services" class="services-section">
+    <h2 class="services-title">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3>Consulting</h3>
+        <p>Expert advice to grow your business and reach your goals.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛠️</div>
+        <h3>Development</h3>
+        <p>Custom software solutions tailored to your needs.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>Design</h3>
+        <p>Modern, user-friendly designs for web and mobile.</p>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+  </section>
     <section
       id="services"
       class="relative w-full h-max flex flex-col items-center justify-center bg-gray-100"
