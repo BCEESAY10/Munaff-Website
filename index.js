@@ -123,3 +123,20 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 })
+
+// Services
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.service-card');
+  const revealCards = () => {
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        card.style.opacity = 1;
+        card.style.transform = 'translateY(0)';
+      }
+    });
+  };
+  window.addEventListener('scroll', revealCards);
+  revealCards();
+});
