@@ -1,3 +1,5 @@
+// File: index.js
+// This file contains JavaScript code for the Munaff Dental Clinic website.
 document.addEventListener("DOMContentLoaded", function(){
     window.addEventListener('scroll', function() {
     let sections = document.querySelectorAll('section');
