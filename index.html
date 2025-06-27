@@ -15,7 +15,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="index.js"></script>
+    
     <style>
       html {
         scroll-behavior: smooth;
@@ -111,7 +111,7 @@
           />
         </div>
 
-        <div class="md:hidden">
+        <div class="lg:hidden">
           <button id="burger" class="text-gray-700 focus:outline-none">
             <svg
               class="w-8 h-8"
@@ -132,7 +132,7 @@
 
         <nav
           id="menu"
-          class="hidden md:flex md:flex-grow md:justify-end md:space-x-6 bg-white absolute top-24 left-0 w-full md:static md:w-auto md:bg-transparent flex-col md:flex-row items-center"
+          class="hidden lg:flex md:flex-grow md:justify-end md:space-x-6 bg-white absolute top-24 left-0 w-full md:static md:w-auto md:bg-transparent flex-col md:flex-row items-center"
         >
           <a
             href="#home"
@@ -346,7 +346,7 @@
           <h3>Crown and Bridges</h3>
         </div>
         <div class="service-card">
-          <img src="images/Denture.jpg" class="w-full mb-4 h-auto rounded" />
+          <img src="images/Denture.jpg" class="w-full mb-4 h-auto rounded" loading="lazy" />
           <h3>Denture</h3>
         </div>
         <div class="service-card">
@@ -701,7 +701,7 @@
       </div>
     </div> -->
   
-
+    <script src="index.js"></script>
     <script> document.getElementById('currentYear').textContent = new Date().getFullYear(); </script>
   </body>
 </html>
