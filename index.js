@@ -124,8 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
-// Services
-
+// Services 
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.service-card');
   const revealCards = () => {
