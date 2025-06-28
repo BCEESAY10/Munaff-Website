@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     setTimeout(() => {
       if (btn) {
-        btn.classList.remove('opacity-0', 'translate-y-8');
+        btn.classList.remove('opacity-0', '-translate-y-8');
         btn.classList.add('opacity-100', 'translate-y-0');
       }
     }, 400);
