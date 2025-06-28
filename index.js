@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+  
 
   // Carousel
   const carousel = document.querySelector('.carousel');
@@ -111,4 +112,38 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   window.addEventListener('scroll', revealCards);
   revealCards();
+});
+
+
+
+// Home section animation
+document.addEventListener("DOMContentLoaded", function () {
+  // Animate h1 and button
+  setTimeout(() => {
+    const title = document.getElementById('home-title');
+    const btn = document.getElementById('home-btn');
+    if (title) {
+      title.classList.remove('opacity-0', 'translate-y-8');
+      title.classList.add('opacity-100', 'translate-y-0');
+    }
+    setTimeout(() => {
+      if (btn) {
+        btn.classList.remove('opacity-0', 'translate-y-8');
+        btn.classList.add('opacity-100', 'translate-y-0');
+      }
+    }, 400);
+  }, 300);
+
+  // Typewriter effect for p
+  const typewriter = document.getElementById('typewriter');
+  const text = "We are here to help you achieve optimal oral health and the beautiful smile you've always wanted.";
+  let i = 0;
+  function type() {
+    if (typewriter && i <= text.length) {
+      typewriter.textContent = text.slice(0, i);
+      i++;
+      setTimeout(type, 35);
+    }
+  }
+  setTimeout(type, 900);
 });
