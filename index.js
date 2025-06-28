@@ -134,16 +134,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 400);
   }, 300);
 
-  // Typewriter effect for p
+  // Typewriter effect for p, repeat every 25 seconds
   const typewriter = document.getElementById('typewriter');
   const text = "We are here to help you achieve optimal oral health and the beautiful smile you've always wanted.";
-  let i = 0;
-  function type() {
-    if (typewriter && i <= text.length) {
-      typewriter.textContent = text.slice(0, i);
-      i++;
-      setTimeout(type, 35);
+  function runTypewriter() {
+    let i = 0;
+    function type() {
+      if (typewriter && i <= text.length) {
+        typewriter.textContent = text.slice(0, i);
+        i++;
+        setTimeout(type, 35);
+      }
     }
+    type();
   }
-  setTimeout(type, 900);
+  runTypewriter();
+  setInterval(() => {
+    runTypewriter();
+  }, 25000);
 });
