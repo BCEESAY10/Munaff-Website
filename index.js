@@ -86,18 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Chatbot
-  // const chatToggle = document.getElementById("chat-toggle");
-  // if (chatToggle) {
-  //   chatToggle.addEventListener("click", function() {
-  //     let chatBox = document.getElementById("chat-box");
-  //     if (chatBox.style.display === "none" || chatBox.style.display === "") {
-  //       chatBox.style.display = "block";
-  //     } else {
-  //       chatBox.style.display = "none";
-  //     }
-  //   });
-  // }
 
   // Services animation
   const cards = document.querySelectorAll('.service-card');
