@@ -56,7 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     img.src = src;
   });
-  
+
+  // Animate the logo
+  setTimeout(function () {
+      const logo = document.getElementById("munaff-logo");
+      logo.classList.remove("opacity-0", "-translate-x-20");
+      logo.classList.add("opacity-100", "translate-x-0");
+    }, 2000);
+
   // Navbar scroll highlight
   window.addEventListener('scroll', function() {
     let sections = document.querySelectorAll('section');
