@@ -220,3 +220,12 @@ document.addEventListener("DOMContentLoaded", function () {
     runTypewriter();
   }, 25000);
 });
+
+
+const philosophyButton = document.getElementById('philosophy-btn');
+
+const showPhilosophyCard = () => {
+  alert("Yes")
+}
+
+philosophyButton.addEventListener('click', showPhilosophyCard);
