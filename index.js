@@ -229,3 +229,17 @@ const showPhilosophyCard = () => {
 }
 
 philosophyButton.addEventListener('click', showPhilosophyCard);
+
+// Try to load the chatbot iframe, show only if loaded
+  const chatbotIframe = document.getElementById('chatbot-iframe');
+  let loaded = false;
+  chatbotIframe.onload = function() {
+    loaded = true;
+    chatbotIframe.style.display = 'block';
+  };
+  // If not loaded after 5 seconds, remove it
+  setTimeout(function() {
+    if (!loaded) {
+      chatbotIframe.parentNode.removeChild(chatbotIframe);
+    }
+  }, 5000);
