@@ -222,13 +222,32 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-const philosophyButton = document.getElementById('philosophy-btn');
+const philosophyBtn = document.getElementById('philosophy-btn');
+const philosophyModal = document.getElementById('philosophy-modal');
+const closePhilosophy = document.getElementById('close-philosophy');
 
-const showPhilosophyCard = () => {
-  alert("Yes")
-}
+philosophyBtn.addEventListener('click', () => {
+    philosophyModal.classList.remove('opacity-0', 'pointer-events-none');
+    philosophyModal.classList.add('opacity-100');
+    setTimeout(() => {
+      philosophyModal.querySelector('div').classList.remove('scale-90', 'rotate-y-180');
+      philosophyModal.querySelector('div').classList.add('scale-100', 'rotate-y-0');
+    }, 10);
+  });
 
-philosophyButton.addEventListener('click', showPhilosophyCard);
+  closePhilosophy.addEventListener('click', () => {
+    philosophyModal.classList.remove('opacity-100');
+    philosophyModal.classList.add('opacity-0', 'pointer-events-none');
+    philosophyModal.querySelector('div').classList.remove('scale-100', 'rotate-y-0');
+    philosophyModal.querySelector('div').classList.add('scale-90', 'rotate-y-180');
+  });
+
+  // Optional: Close modal when clicking outside the modal box
+  philosophyModal.addEventListener('click', (e) => {
+    if (e.target === philosophyModal) {
+      closePhilosophy.click();
+    }
+  });
 
 // Try to load the chatbot iframe, show only if loaded
   const chatbotIframe = document.getElementById('chatbot-iframe');
