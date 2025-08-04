@@ -1,6 +1,62 @@
 // File: index.js
 // This file contains JavaScript code for the Munaff Dental Clinic website.
 document.addEventListener("DOMContentLoaded", function () {
+
+   // Loader logic
+  const loader = document.getElementById('page-loader');
+  const percent = document.getElementById('loader-percent');
+  let currentPercent = 0;
+  let interval;
+
+  // List of images to preload (hero bg + about carousel)
+  const imagesToLoad = [
+    "images/Home.jpg",
+    "images/Home-image.JPG",
+    "images/about/img-1.jpg",
+    "images/about/img-2.jpg",
+    "images/about/img-3.jpg",
+    "images/about/img-4.jpg",
+    "images/about/img-5.jpg",
+    "images/about/img-6.jpg",
+    "images/about/img-7.jpg",
+    "images/about/img-9.jpg",
+    "images/about/img-11.jpg",
+    "images/about/img-12.jpg"
+  ];
+  let loadedCount = 0;
+
+  function updatePercent(val) {
+    percent.textContent = `${val}%`;
+  }
+
+  function finishLoader() {
+    loader.style.opacity = 0;
+    setTimeout(() => loader.style.display = 'none', 700);
+  }
+
+  // Animate percent from 0 to 100
+  interval = setInterval(() => {
+    if (currentPercent < 99) {
+      currentPercent += 1;
+      updatePercent(currentPercent);
+    }
+  }, 18);
+
+  // Preload images
+  imagesToLoad.forEach(src => {
+    const img = new Image();
+    img.onload = img.onerror = function () {
+      loadedCount++;
+      // When all images loaded, set percent to 100 and hide loader
+      if (loadedCount === imagesToLoad.length) {
+        clearInterval(interval);
+        updatePercent(100);
+        setTimeout(finishLoader, 600);
+      }
+    };
+    img.src = src;
+  });
+  
   // Navbar scroll highlight
   window.addEventListener('scroll', function() {
     let sections = document.querySelectorAll('section');
