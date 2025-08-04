@@ -20,6 +20,11 @@
       html {
         scroll-behavior: smooth;
       }
+      html, body{
+        overflow-x: hidden;
+        width: 100vw;
+        max-width: 100vw;
+      }
       header .container nav a:hover {
         background-color: #151b54;
       }
@@ -138,7 +143,7 @@
           />
         </div>
 
-        <div class="lg:hidden">
+        <div class="lg:hidden pr-6">
           <button id="burger" class="text-gray-700 focus:outline-none">
             <svg
               class="w-8 h-8"
@@ -206,7 +211,7 @@
           style="color: #1e90ff">
           MUNAFF DENTAL CLINIC
         </h1>
-        <p id="typewriter" class="text-white mt-4 opacity-80 text-xl md:mx-12 min-w-[320px] md:min-w-[500px] mx-auto"
+        <p id="typewriter" class="text-white px-6 mt-4 opacity-80 text-xl md:mx-12 min-w-[320px] md:min-w-[500px] mx-auto"
           style="display: inline-block;">
           We are here to help you achieve optimal oral health and the beautiful
           smile you've always wanted.
