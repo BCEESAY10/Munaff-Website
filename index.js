@@ -184,21 +184,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Home section animation
 document.addEventListener("DOMContentLoaded", function () {
-  // Animate h1 and button
+  // Animate h1 
   setTimeout(() => {
     const title = document.getElementById("home-title");
-    const btn = document.getElementById("home-btn");
     if (title) {
       title.classList.remove("opacity-0", "translate-y-8");
       title.classList.add("opacity-100", "translate-y-0");
     }
-    setTimeout(() => {
-      if (btn) {
-        btn.classList.remove("opacity-0", "-translate-y-8");
-        btn.classList.add("opacity-100", "translate-y-0");
-      }
-    }, 400);
-  }, 300);
+  }, 500);
 
   // Typewriter effect for p, repeat every 25 seconds
   const typewriter = document.getElementById("typewriter");
@@ -218,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
   runTypewriter();
   setInterval(() => {
     runTypewriter();
-  }, 25000);
+  }, 35000);
 });
 
 
