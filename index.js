@@ -1,10 +1,9 @@
 // File: index.js
 // This file contains JavaScript code for the Munaff Dental Clinic website.
 document.addEventListener("DOMContentLoaded", function () {
-
-   // Loader logic
-  const loader = document.getElementById('page-loader');
-  const percent = document.getElementById('loader-percent');
+  // Loader logic
+  const loader = document.getElementById("page-loader");
+  const percent = document.getElementById("loader-percent");
   let currentPercent = 0;
   let interval;
 
@@ -21,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "images/about/img-7.jpg",
     "images/about/img-9.jpg",
     "images/about/img-11.jpg",
-    "images/about/img-12.jpg"
+    "images/about/img-12.jpg",
   ];
   let loadedCount = 0;
 
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function finishLoader() {
     loader.style.opacity = 0;
-    setTimeout(() => loader.style.display = 'none', 700);
+    setTimeout(() => (loader.style.display = "none"), 700);
   }
 
   // Animate percent from 0 to 100
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 18);
 
   // Preload images
-  imagesToLoad.forEach(src => {
+  imagesToLoad.forEach((src) => {
     const img = new Image();
     img.onload = img.onerror = function () {
       loadedCount++;
@@ -57,57 +56,71 @@ document.addEventListener("DOMContentLoaded", function () {
     img.src = src;
   });
 
-  // Animate the logo
+  // Animate the logo and nav items
   setTimeout(function () {
-      const logo = document.getElementById("munaff-logo");
-      logo.classList.remove("opacity-0", "-translate-x-20");
-      logo.classList.add("opacity-100", "translate-x-0");
-    }, 2000);
+    const logo = document.getElementById("munaff-logo");
+    logo.classList.remove("opacity-0", "-translate-x-20");
+    logo.classList.add("opacity-100", "translate-x-0");
+
+    // Animate <a> elements with unique hrefs
+    const links = ["#home", "#about", "#services", "#team", "#appointment", "#contact"];
+
+    links.forEach((href, index) => {
+      const link = document.querySelector(`a[href="${href}"]`);
+      if (link) {
+        setTimeout(() => {
+          link.classList.remove("opacity-0", "-translate-y-20");
+          link.classList.add("opacity-100", "translate-y-0");
+        }, 500 + (index + 1) * 200); // stagger after logo
+      }
+    });
+  }, 2000); // initial delay for the logo
 
   // Navbar scroll highlight
-  window.addEventListener('scroll', function() {
-    let sections = document.querySelectorAll('section');
-    let navLinks = document.querySelectorAll('nav a');
-    sections.forEach(section => {
+  window.addEventListener("scroll", function () {
+    let sections = document.querySelectorAll("section");
+    let navLinks = document.querySelectorAll("nav a");
+    sections.forEach((section) => {
       let top = window.scrollY;
       let offset = section.offsetTop - 150;
       let height = section.offsetHeight;
-      let id = section.getAttribute('id');
+      let id = section.getAttribute("id");
       if (top >= offset && top < offset + height) {
-        navLinks.forEach(link => {
-          link.classList.remove('bg-[#151B54]', 'text-white');
-          document.querySelector('nav a[href*=' + id + ']').classList.add('bg-[#151B54]', 'text-white');
+        navLinks.forEach((link) => {
+          link.classList.remove("bg-[#151B54]", "text-white");
+          document
+            .querySelector("nav a[href*=" + id + "]")
+            .classList.add("bg-[#151B54]", "text-white");
         });
       }
     });
   });
 
   // Burger menu
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-  const navLinks = document.querySelectorAll('#menu a');
+  const burger = document.getElementById("burger");
+  const menu = document.getElementById("menu");
+  const navLinks = document.querySelectorAll("#menu a");
   if (burger && menu) {
-    burger.addEventListener('click', function() {
-      menu.classList.toggle('hidden');
-      menu.classList.toggle('flex');
+    burger.addEventListener("click", function () {
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("flex");
     });
-    navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        if (menu.classList.contains('flex')) {
-          menu.classList.add('hidden');
-          menu.classList.remove('flex');
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        if (menu.classList.contains("flex")) {
+          menu.classList.add("hidden");
+          menu.classList.remove("flex");
         }
       });
     });
   }
-  
 
   // Carousel
-  const carousel = document.querySelector('.carousel');
-  const items = document.querySelectorAll('.carousel-item');
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
-  const carouselContainer = document.querySelector('.carousel-container');
+  const carousel = document.querySelector(".carousel");
+  const items = document.querySelectorAll(".carousel-item");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  const carouselContainer = document.querySelector(".carousel-container");
   if (carousel && items.length && prevBtn && nextBtn && carouselContainer) {
     let currentIndex = 0;
     const totalSlides = items.length;
@@ -125,8 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
       updateCarousel();
     };
     let autoSlide = setInterval(showNext, slideInterval);
-    carouselContainer.addEventListener('mouseover', () => clearInterval(autoSlide));
-    carouselContainer.addEventListener('mouseleave', () => {
+    carouselContainer.addEventListener("mouseover", () =>
+      clearInterval(autoSlide)
+    );
+    carouselContainer.addEventListener("mouseleave", () => {
       autoSlide = setInterval(showNext, slideInterval);
     });
     prevBtn.addEventListener("click", () => {
@@ -141,7 +156,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Touch gestures
     let startX = 0;
-    carousel.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
+    carousel.addEventListener(
+      "touchstart",
+      (e) => (startX = e.touches[0].clientX)
+    );
     carousel.addEventListener("touchend", (e) => {
       const endX = e.changedTouches[0].clientX;
       if (startX > endX + 50) showNext();
@@ -149,45 +167,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
   // Services animation
-  const cards = document.querySelectorAll('.service-card');
+  const cards = document.querySelectorAll(".service-card");
   const revealCards = () => {
-    cards.forEach(card => {
+    cards.forEach((card) => {
       const rect = card.getBoundingClientRect();
       if (rect.top < window.innerHeight - 60) {
         card.style.opacity = 1;
-        card.style.transform = 'translateY(0)';
+        card.style.transform = "translateY(0)";
       }
     });
   };
-  window.addEventListener('scroll', revealCards);
+  window.addEventListener("scroll", revealCards);
   revealCards();
 });
-
-
 
 // Home section animation
 document.addEventListener("DOMContentLoaded", function () {
   // Animate h1 and button
   setTimeout(() => {
-    const title = document.getElementById('home-title');
-    const btn = document.getElementById('home-btn');
+    const title = document.getElementById("home-title");
+    const btn = document.getElementById("home-btn");
     if (title) {
-      title.classList.remove('opacity-0', 'translate-y-8');
-      title.classList.add('opacity-100', 'translate-y-0');
+      title.classList.remove("opacity-0", "translate-y-8");
+      title.classList.add("opacity-100", "translate-y-0");
     }
     setTimeout(() => {
       if (btn) {
-        btn.classList.remove('opacity-0', '-translate-y-8');
-        btn.classList.add('opacity-100', 'translate-y-0');
+        btn.classList.remove("opacity-0", "-translate-y-8");
+        btn.classList.add("opacity-100", "translate-y-0");
       }
     }, 400);
   }, 300);
 
   // Typewriter effect for p, repeat every 25 seconds
-  const typewriter = document.getElementById('typewriter');
-  const text = "We are here to help you achieve optimal oral health and the beautiful smile you've always wanted.";
+  const typewriter = document.getElementById("typewriter");
+  const text =
+    "We are here to help you achieve optimal oral health and the beautiful smile you've always wanted.";
   function runTypewriter() {
     let i = 0;
     function type() {
